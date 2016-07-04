@@ -48,6 +48,7 @@ struct treap {
     }
     static pair<shared_ptr<treap>, shared_ptr<treap> > split(shared_ptr<treap> const & t, size_t i) { // [0, i) [i, n), destructive
         if (not t) return { shared_ptr<treap>(), shared_ptr<treap>() };
+
         if (i <= size(t->l)) {
             shared_ptr<treap> u; tie(u, t->l) = split(t->l, i);
             return { u, update(t) };

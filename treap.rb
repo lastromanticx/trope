@@ -1,4 +1,4 @@
-class Treap
+class T
   attr_accessor :value, :size, :left, :right
   attr_reader :key
 
@@ -33,7 +33,7 @@ class Treap
   end
 
   def self.split(treap,i)
-    if not treap then return [self.new, self.new] end
+    if not treap then return [nil,nil] end
     if i <= self.size(treap.left)
       u, treap.left = self.split(treap.left, i)
       [u, self.update(treap)]
