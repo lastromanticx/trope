@@ -55,4 +55,38 @@ class T
     left, u = self.split(left, i)
     [self.merge(left,right), u]
   end
+
+ # shifts elements between [l,r] to position i
+  def self.shiftL t,l,r,i
+    a,c = split t,r + 1
+    a,lr = split a,l
+    a,b = split a,i
+
+    t = merge(merge(a,lr), merge(b,c))
+    
+    t
+  end
+end
+
+class Traverse
+  attr_accessor :tree
+  attr_reader :in_order
+
+  def initialize tree
+    @tree = tree
+    @in_order = []
+    self.recurse_in_order tree
+  end
+
+  def recurse_in_order t
+    if t.left
+      recurse_in_order t.left
+    end
+
+    in_order << t.value
+
+    if t.right
+      recurse_in_order t.right
+    end
+  end
 end
