@@ -57,7 +57,7 @@ class T
   end
 
  # shifts elements between [l,r] to position i
-  def self.shiftL t,l,r,i
+  def self.shift_l t,l,r,i
     a,c = split t,r + 1
     a,lr = split a,l
     a,b = split a,i
